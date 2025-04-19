@@ -1,8 +1,4 @@
-"use client";
-
-import "@/styles/globals.css";
-import { SessionProvider } from "next-auth/react";  // Assurez-vous que SessionProvider est ici
-
+import NavbarOne from "@/components/headers/NavbarOne";
 
 export default function RootLayout({
   children,
@@ -10,13 +6,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SessionProvider>
       <html lang="en">
         <body>
+          <div className="w-screen sticky top-0">
+          <NavbarOne />
+          </div>
+          <div className="px-5 lg:px-7">
             {children}
+          </div>
         </body>
       </html>
-    </SessionProvider>
   );
 }
 

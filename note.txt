@@ -1,0 +1,7 @@
+****** resaka liks le button  *******
+import { useRouter } from "next/navigation";
+
+  const router = useRouter();
+  const handleLogout = () => {
+    router.push("/pages"); 
+  }
