@@ -7,7 +7,7 @@ export default function ThemeToggle() {
     const [theme, setTheme] = useState('light')
 
     useEffect(() => {
-        // vérifie si dark mode est actif dans localStorage
+
         const storedTheme = localStorage.getItem('theme')
         if (
             storedTheme === 'dark' ||

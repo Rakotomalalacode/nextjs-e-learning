@@ -6,6 +6,7 @@ import GoogleImage from "@/public/images/google-icon-logo.svg"
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Loading from '@/components/Loading';
 
 interface SignInPageProps { }
 
@@ -30,7 +31,7 @@ export default function SignInPage({ }: SignInPageProps) {
   }, []);
 
   if (!providers) {
-    return <div>Chargement des options de connexion...</div>;
+    return <Loading/>;
   }
 
   return (

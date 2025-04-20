@@ -1,5 +1,6 @@
 "use client"
 
+import Loading from '@/components/Loading';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
@@ -15,7 +16,7 @@ export default function Dashboard() {
   }, [status, router]);
 
   if (status === 'loading') {
-    return <p>Chargement...</p>;
+    return <Loading />;
   }
 
   return (

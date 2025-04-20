@@ -12,13 +12,8 @@ import Produitview from '@/app/view/produitview/page';
 import BarDeRechercher from '../BarDeRechercher';
 import Image from 'next/image';
 import LogoMini from '@/public/images/eduvibemin.png'
-interface MenuItem {
-  id: string;
-  labelOne: any;
-  labelTow: any;
-  name: string;
-  description: any;
-}
+import { MenuItem } from '@/interface/MenuItem';
+import Loading from '../Loading';
 
 
 const menuItems: MenuItem[] = [
@@ -104,7 +99,7 @@ const DashStudent: React.FC = () => {
         {selectedItem && <Description description={selectedItem.description} />}
         {!selectedItem && (
           <div className="p-4 border-l border-t rounded-tl-lg border-gray-300 h-full">
-            kjkj
+            <Loading/>
           </div>
         )}
       </div>
