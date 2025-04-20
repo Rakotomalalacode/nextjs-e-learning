@@ -11,9 +11,9 @@ export default async function Autheme() {
       {session ? (
         <Link href="/dashboard" className="text-blue-500 underline">Aller au dashboard</Link>
       ) : (
-        <div className="flex gap-6">
+        <div className="flex gap-8">
           <Link 
-          href="/login" 
+          href="/auth/signin" 
                           className="bg-oranground hover:bg-oranground/90 text-white rounded-sm py-2 px-7"
           >Se connecter</Link>
           <ThemeToggle />

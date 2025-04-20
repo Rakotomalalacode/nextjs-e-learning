@@ -36,10 +36,10 @@ export default function BarDeRechercher() {
         <div
           onClick={() => setOpen(true)}
           className="inline-flex items-center space-x-1 text-gray-500 gap-2 text-sm">
-          <p className="px-2 py-1 border border-b-3 border-l-[1.8] border-gray-300 rounded dark:bg-[#252523] text-xs font-mono shadow-sm">
+          <p className="px-2 py-1 border border-b-3 border-l-[1.8] rounded border-darkwhite text-xs font-mono shadow-sm">
             CTRL
           </p>
-          <p className="px-2 py-1 border border-b-3 border-l-[1.8] border-gray-300 rounded dark:bg-[#252523] text-xs font-mono shadow-sm">
+          <p className="px-2 py-1 border border-b-3 border-l-[1.8] border-darkwhite rounded  text-xs font-mono shadow-sm">
             K
           </p>
         </div>
@@ -69,11 +69,11 @@ export default function BarDeRechercher() {
               </div>
             </div>
             <div className='p-4 bg-background rounded-b-md flex justify-between '>
-              <Button Variantes={'Links'} Text={'voir plus de course'} />
+              <Button Variantes={'Links'} Text={'voir plus de cours'} />
               <div
                 onClick={() => setOpen(false)}
                 className="inline-flex items-center space-x-1 text-gray-500  text-sm">
-                <p className="px-2 py-1 border border-b-3 border-l-[1.8] border-gray-300 rounded dark:bg-[#252523] text-xs font-mono shadow-sm">
+                <p className="px-2 py-1 border border-b-3 border-l-[1.8] border-darkwhite rounded dark:bg-[#252523] text-xs font-mono shadow-sm">
                   esc
                 </p>
                 <span>Fermer</span>

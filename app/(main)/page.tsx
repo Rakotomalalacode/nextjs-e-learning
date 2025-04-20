@@ -1,10 +1,10 @@
-import Autheme from "@/components/Autheme";
+import Produitview from "../view/produitview/page";
 
 export default function Home() {
 
   return (
     <div>
-      cvcvcvl
+      <Produitview />
     </div>
   )
 }
