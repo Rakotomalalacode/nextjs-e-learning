@@ -1,19 +1,23 @@
 'use client';
 
-import { getProviders, signIn, Provider } from 'next-auth/react';
+import { getProviders, signIn, Provider, useSession } from 'next-auth/react';
 import Image from 'next/image';
-import GoogleImage from "@/public/images/google-icon-logo.svg"
+import GoogleImage from "@/public/images/google-icon-logo.svg";
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Loading from '@/components/Loading';
+import { LoadingSignin } from '@/components/ui/LoadingSignin';
+import CryptoJS from "crypto-js";
+
+const ENCRYPTION_ID = "ny_avy_any_tonga_aty_ny_aty_tonga_any"
 
 interface SignInPageProps { }
 
 export default function SignInPage({ }: SignInPageProps) {
   const [providers, setProviders] = useState<Record<string, Provider> | null>(null);
-  const [callbackUrl, setCallbackUrl] = useState<string>('/dashboard');
   const router = useRouter();
+  const { data: session, status } = useSession();
 
   useEffect(() => {
     const fetchProviders = async () => {
@@ -22,16 +26,34 @@ export default function SignInPage({ }: SignInPageProps) {
     };
 
     fetchProviders();
-
-    const searchParams = new URLSearchParams(window.location.search);
-    const urlCallbackUrl = searchParams.get('callbackUrl');
-    if (urlCallbackUrl) {
-      setCallbackUrl(urlCallbackUrl);
-    }
   }, []);
 
+  useEffect(() => {
+    if (status === 'authenticated') {
+      if (session?.user?.role) {
+
+        const cryptGoogleId = CryptoJS.AES.encrypt(
+          session.user?.googleId.toString(),
+          ENCRYPTION_ID
+        ).toString();
+
+        router.push(`/dashboard/${session.user.role}?${cryptGoogleId}&${cryptGoogleId}&U=${session.user.googleId}&${session.user?.email}`);
+      } else {
+        router.push(`/auth/signin`);
+      }
+    }
+  }, [status, session, router]);
+
+  if (status === 'loading') {
+    return <Loading />;
+  }
+
+  if (status === 'authenticated') {
+    return <Loading />;
+  }
+
   if (!providers) {
-    return <Loading/>;
+    return <LoadingSignin />;
   }
 
   return (
@@ -48,7 +70,8 @@ export default function SignInPage({ }: SignInPageProps) {
           <div key={provider.name}>
             <button
               className="flex items-center gap-6 border hover:border-oranground hover:text-oranground border-gray-200 p-4 lg:px-6 rounded-lg"
-              onClick={() => signIn(provider.id, { callbackUrl })}>
+              onClick={() => signIn(provider.id)}
+            >
               <Image
                 src={GoogleImage}
                 alt={"GoogleImage"}

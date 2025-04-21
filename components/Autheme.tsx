@@ -1,12 +1,27 @@
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
+"use client"
+
 import Link from "next/link"
 import ThemeToggle from "@/components/ThemeToggle"
 import { IoCartOutline } from "react-icons/io5"
-
-export default async function Autheme() {
-  const session = await getServerSession(authOptions)
-
+import { useEffect, useState } from "react"
+import { useSession } from "next-auth/react"
+import CryptoJS from "crypto-js";
+const ENCRYPTION_URL = "ny_avy_any_tonga_aty_ny_aty_tonga_any"
+export default function Autheme() {
+  const [linksSignin, setLinksSignin] = useState('');
+  const { data: session, status } = useSession();
+  const [baseUrl, setBaseUrl] = useState('');
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const currentBaseUrl = window.location.origin;
+      setBaseUrl(currentBaseUrl);
+      const encryptedURL = CryptoJS.AES.encrypt(
+        currentBaseUrl.toString(),
+        ENCRYPTION_URL
+      ).toString();
+      setLinksSignin(`/auth/signin?${encryptedURL}${encryptedURL}`);
+    }
+  }, []);
   return (
     <div>
       {session ? (
@@ -42,7 +57,7 @@ export default async function Autheme() {
             <IoCartOutline size={23} className="mt-2" />
           </div>
           <Link
-            href="/auth/signin"
+            href={linksSignin}
             className="bg-oranground hover:bg-oranground/90 text-white rounded-sm py-2 px-7"
           >Se connecter</Link>
           <ThemeToggle />
