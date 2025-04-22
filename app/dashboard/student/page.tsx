@@ -1,6 +1,6 @@
 import DashStudent from "@/components/headers/DashStudent"
 
-const Student = () => {
+const Teacher = () => {
     return (
         <div>
             <DashStudent />
@@ -8,7 +8,4 @@ const Student = () => {
     )
 }
 
-export default Student
-
-
-
+export default Teacher
