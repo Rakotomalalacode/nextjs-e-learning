@@ -31,7 +31,6 @@ export default function SignInPage({ }: SignInPageProps) {
   useEffect(() => {
     if (status === 'authenticated') {
       if (session?.user?.role) {
-
         const cryptGoogleId = CryptoJS.AES.encrypt(
           session.user?.googleId.toString(),
           ENCRYPTION_ID
@@ -58,7 +57,7 @@ export default function SignInPage({ }: SignInPageProps) {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen ">
-      <div className="w-[90%] lg:w-auto lg:p-16 p-10 text-center flex flex-col gap-6 rounded-lg bg-darkwhite">
+      <div className="w-[90%] md:w-auto lg:p-16 p-10 text-center flex flex-col gap-6 rounded-lg bg-darkwhite">
         <Link href={"/"}>
           <div className="font-major bg-transparent text-white text-center">
             <h1 className="text-5xl text-oranground">eduVibe</h1>
@@ -67,7 +66,7 @@ export default function SignInPage({ }: SignInPageProps) {
         </Link>
         <h1 className="lg:text-3xl text-2xl">Connexion ou Inscription</h1>
         {Object.values(providers).map((provider) => (
-          <div key={provider.name}>
+          <div key={provider.name} className='w-full flex justify-center'>
             <button
               className="flex items-center gap-6 border hover:border-oranground hover:text-oranground border-gray-200 p-4 lg:px-6 rounded-lg"
               onClick={() => signIn(provider.id)}

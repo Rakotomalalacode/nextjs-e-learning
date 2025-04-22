@@ -8,6 +8,7 @@
   --oranground: #FF6B00;
   --darkwhite: #ffff;
   --principal: #1f2937;
+  --dash:#d1d5dc;
 }
 
 @theme inline {
@@ -16,6 +17,7 @@
   --color-darkwhite: var(--darkwhite);
   --color-principal: var(--principal);
   --color-foreground: var(--foreground);
+  --color-dash:var(--dash);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-major: "Major Mono Display", "serif";
@@ -38,6 +40,7 @@
   --foreground: #ededed;
   --darkwhite: #2f2f2fbe;
   --principal: #ffff;
+  --dash:#2f2f2fbe;
 }
 
 

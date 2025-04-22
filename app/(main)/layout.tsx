@@ -1,5 +1,10 @@
 import NavbarOne from "@/components/headers/NavbarOne";
+import type { Metadata } from 'next'
 
+export const metadata: Metadata = {
+    title: 'EDUVIBE',
+    description: 'Learning your Way',
+}
 export default function RootLayout({
   children,
 }: Readonly<{

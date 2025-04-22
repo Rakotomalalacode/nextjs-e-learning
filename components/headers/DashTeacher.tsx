@@ -17,7 +17,6 @@ import { LiaUserEditSolid } from 'react-icons/lia';
 import EditProfil from '../EditProfil';
 import { HiMiniChevronDown } from 'react-icons/hi2';
 
-
 interface DescriptionProps {
     description: string;
 }
@@ -80,7 +79,7 @@ const Description: React.FC<DescriptionProps> = ({ description }) => {
 
     return (
         <div className=" h-full overflow-auto overflow-y-scroll max-h-screen">
-            <div className='sticky  top-0 bg-background p-4 flex items-center  justify-between border-b border-gray-300'>
+            <div className='sticky  top-0 bg-background p-4 flex items-center  justify-between border-b border-dash'>
                 <h1 className='flex gap-2'><HoursMalalafomba /><p className='text-oranground'>{session.user?.name}</p></h1>
                 <BarDeRechercher />
                 <div ref={popoverRef}>
@@ -115,7 +114,7 @@ const Description: React.FC<DescriptionProps> = ({ description }) => {
                     )}
                 </div>
             </div>
-            <div className='border-l border-gray-300 p-4'>
+            <div className='p-4'>
                 {description}
             </div>
         </div>
@@ -218,10 +217,10 @@ const DashTeacher: React.FC = () => {
                 </div>
             </div>
 
-            <div className="flex-1">
+            <div className="flex-1 border-l  border-dash">
                 {selectedItem && <Description description={selectedItem.description} />}
                 {!selectedItem && (
-                    <div className="p-4 border-l border-t rounded-tl-lg border-gray-300 h-full">
+                    <div className="p-4 h-full">
                         <Loading />
                     </div>
                 )}

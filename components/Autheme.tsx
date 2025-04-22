@@ -6,11 +6,14 @@ import { IoCartOutline } from "react-icons/io5"
 import { useEffect, useState } from "react"
 import { useSession } from "next-auth/react"
 import CryptoJS from "crypto-js";
+import { useRouter } from "next/navigation"
+
 const ENCRYPTION_URL = "ny_avy_any_tonga_aty_ny_aty_tonga_any"
 export default function Autheme() {
   const [linksSignin, setLinksSignin] = useState('');
   const { data: session, status } = useSession();
   const [baseUrl, setBaseUrl] = useState('');
+  const router = useRouter();
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const currentBaseUrl = window.location.origin;
@@ -22,6 +25,9 @@ export default function Autheme() {
       setLinksSignin(`/auth/signin?${encryptedURL}${encryptedURL}`);
     }
   }, []);
+
+
+
   return (
     <div>
       {session ? (
@@ -37,10 +43,19 @@ export default function Autheme() {
             </div>
             <IoCartOutline size={23} className="mt-2" />
           </div>
-          <Link
-            href="/dashboard"
+          <button
+            onClick={() => {
+              if (session?.user?.role) {
+                const ENCRYPTION_URLS = "ny_avy_any_tonga_aty_ny_aty_tonga_any"
+                const cryptGoogleId = CryptoJS.AES.encrypt(
+                  session.user?.googleId.toString(),
+                  ENCRYPTION_URLS
+                ).toString();
+                router.push(`/dashboard/${session.user.role}?${cryptGoogleId}&${cryptGoogleId}&U=${session.user.googleId}&${session.user?.email}`);
+              }
+            }}
             className="bg-oranground hover:bg-oranground/90 text-white rounded-sm py-2 px-7"
-          >dashboard</Link>
+          >Compte</button>
           <ThemeToggle />
         </div>
       ) : (
