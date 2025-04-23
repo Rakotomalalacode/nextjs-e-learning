@@ -12,10 +12,10 @@ import CryptoJS from "crypto-js";
 
 const ENCRYPTION_ID = "ny_avy_any_tonga_aty_ny_aty_tonga_any"
 
-interface SignInPageProps { }
+//interface SignInPageProps { } <Record<string, Provider> | null>
 
-export default function SignInPage({ }: SignInPageProps) {
-  const [providers, setProviders] = useState<Record<string, Provider> | null>(null);
+export default function SignInPage() {
+  const [providers, setProviders] = useState(null);
   const router = useRouter();
   const { data: session, status } = useSession();
 

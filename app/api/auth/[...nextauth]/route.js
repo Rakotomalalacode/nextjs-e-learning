@@ -1,5 +1,14 @@
 // app/api/auth/[...nextauth]/route.ts
-import NextAuth, { NextAuthOptions, Session, User } from 'next-auth';
+
+import NextAuth from "next-auth";
+import { authOptions } from "@/lib/auth";
+
+const handler = NextAuth(authOptions)
+
+export {handler as GET , handler as POST }
+
+
+/*import NextAuth, { NextAuthOptions, Session, User } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import { PrismaClient } from '@prisma/client';
 import { Profile } from 'next-auth';
@@ -62,7 +71,7 @@ const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
 
-
+*/
 
 /*// app/api/auth/[...nextauth]/route.ts
 import NextAuth, { NextAuthOptions, Session, User } from 'next-auth';

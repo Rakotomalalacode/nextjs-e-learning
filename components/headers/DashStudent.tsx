@@ -50,10 +50,10 @@ const Description: React.FC<DescriptionProps> = ({ description }) => {
   return (
     <div className=" h-full overflow-auto overflow-y-scroll max-h-screen">
       <div className='sticky  top-0 bg-background p-4 flex items-center  justify-between border-b border-gray-300'>
-      <h1 className='flex gap-2'><HoursMalalafomba /><p className='text-oranground'>{session.user?.name}</p></h1>
+      <h1 className='flex gap-2'><HoursMalalafomba /><p className='text-oranground'>{session?.user?.name}</p></h1>
       <BarDeRechercher />
         <Image
-          src={session.user.image || "/images/585e4beacb11b227491c3399.png"}
+          src={session?.user?.image || "/images/585e4beacb11b227491c3399.png"}
           alt="Photo de profil"
           width={100}
           height={100}

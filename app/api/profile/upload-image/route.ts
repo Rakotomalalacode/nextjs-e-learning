@@ -16,7 +16,7 @@ export const config = {
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
-    const imageFile = formData.get('image') as Blob | null;
+    const imageFile = formData.get('image') as null | File;
     const userId = formData.get('userId') as string | null;
 
     if (!userId || !imageFile) {
@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
       }
     });
 
-    return NextResponse.json({ message: 'Image de profil mise à jour avec succès', imageUrl: updatedUser.image });
+    return NextResponse.json({ message: 'Image de profil mise à jour avec succès', imageUrl: updatedUser.imageLocal });
   } catch (error: any) {
     console.error('Erreur lors du téléversement de l\'image:', error);
     return NextResponse.json({ message: 'Erreur lors du téléversement de l\'image.' }, { status: 500 });

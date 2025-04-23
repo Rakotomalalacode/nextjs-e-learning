@@ -1,10 +1,15 @@
 'use client';
 
-import {EditProfil}  from '@/types/EditProfil';
 import { useState } from 'react';
 
 type Props = {
     items: EditProfil[];
+};
+
+type EditProfil = {
+    id: number;
+    title: any;
+    content: any;
 };
 
 export default function EditProfil({ items }: Props) {
