@@ -16,7 +16,7 @@ export const config = {
 export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
-    const imageFile = formData.get('image') as null | File;
+    const imageFile = formData.get('image') as File | null;
     const userId = formData.get('userId') as string | null;
 
     if (!userId || !imageFile) {
