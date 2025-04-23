@@ -19,6 +19,7 @@ export async function GET(request: Request) {
         id:true,
         createdAt:true,
         googleId:true,
+        imageLocal:true,
         role:true,
         updatedAt:true,
       },

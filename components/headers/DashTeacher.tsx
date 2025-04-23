@@ -17,24 +17,12 @@ import { LiaUserEditSolid } from 'react-icons/lia';
 import EditProfil from '../EditProfil';
 import { HiMiniChevronDown } from 'react-icons/hi2';
 
+import UploadImage from '../ui/UploadImage';
+import Tooltip from '../ui/Tooltip';
+
 interface DescriptionProps {
     description: string;
 }
-
-const accordionItems = [
-    {
-        id: 1,
-        title:
-            <div className='p-4 flex hover:bg-darkwhite items-center justify-between border-t rounded-b-lg border-gray-200'>
-                <p>Edit Profile</p>
-                <LiaUserEditSolid size={25} />
-            </div>,
-        content:
-            <div>
-                hello
-            </div>
-    },
-]
 
 const Description: React.FC<DescriptionProps> = ({ description }) => {
     const searchParams = useSearchParams();
@@ -77,6 +65,18 @@ const Description: React.FC<DescriptionProps> = ({ description }) => {
     }, [googleId]);
     if (error) return <div className="text-red-500">{error}</div>;
 
+    const accordionItems = [
+        {
+            id: 1,
+            title:
+                <div className='p-4 flex hover:bg-darkwhite items-center justify-between border-t rounded-b-lg border-dash'>
+                    <p>Edit Profile</p>
+                    <LiaUserEditSolid size={25} />
+                </div>,
+            content: <UploadImage userId={session?.user?.email} />,
+        },
+    ]
+
     return (
         <div className=" h-full overflow-auto overflow-y-scroll max-h-screen">
             <div className='sticky  top-0 bg-background p-4 flex items-center  justify-between border-b border-dash'>
@@ -86,7 +86,7 @@ const Description: React.FC<DescriptionProps> = ({ description }) => {
                     <div
                         onClick={() => setOpen(prev => !prev)}>
                         <Image
-                            src={session.user.image || "/images/585e4beacb11b227491c3399.png"}
+                            src={session?.user?.imageLocal || "/images/585e4beacb11b227491c3399.png"}
                             alt="Photo de profil"
                             width={100}
                             height={100}
@@ -95,20 +95,24 @@ const Description: React.FC<DescriptionProps> = ({ description }) => {
                     </div>
                     {open && (
                         <div
-                            className="absolute top-full right-2 z-20 mt-2 bg-background border border-gray-200 rounded shadow-lg w-64"
+                            className="absolute top-full right-2 z-20 mt-2 bg-background border border-dash rounded shadow-lg w-64"
                         >
-                            <div className='p-4 flex gap-4 items-center hover:bg-darkwhite rounded-t-lg'>
-                                <Image
-                                    src={session.user.image || "/images/585e4beacb11b227491c3399.png"}
-                                    alt="Photo de profil"
-                                    width={100}
-                                    height={100}
-                                    className='w-10 h-10 rounded-full' />
-                                <div>
-                                    <p className='text-xl font-medium'>{session.user?.name}</p>
-                                    <p className='-mt-1.5 text-[14px]'>{session.user?.role}</p>
+                                <div className='p-4 hover:bg-darkwhite rounded-t-lg'>
+                                <Tooltip text={`${session?.user?.email}`}>
+                                    <div className='flex gap-4 items-center'>
+                                    <Image
+                                        src={session?.user?.imageLocal || "/images/585e4beacb11b227491c3399.png"}
+                                        alt="Photo de profil"
+                                        width={100}
+                                        height={100}
+                                        className='w-10 h-10 rounded-full' />
+                                    <div>
+                                        <p className='text-xl font-medium'>{session?.user?.name}</p>
+                                        <p className='-mt-1.5 text-[14px]'>{session?.user?.role}</p>
+                                    </div>
+                                    </div>
+                                    </Tooltip>
                                 </div>
-                            </div>
                             <EditProfil items={accordionItems} />
                         </div>
                     )}

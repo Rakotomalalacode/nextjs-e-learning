@@ -80,6 +80,9 @@ export default function SignInPage({ }: SignInPageProps) {
             </button>
           </div>
         ))}
+        <div className='text-sm max-w-80 m-auto'>
+          En continuant, vous acceptez les <Link target="_blank" href={'/conditions-utilisation'} className='text-blue-700 hover:underline'>conditions d'utilisation</Link> d' <span className='text-oranground font-major'>eduVibe</span> et avez lu <Link target="_blank" href={'/politique-de-confidentialite'} className='text-blue-700 hover:underline'>la politique de confidentialité</Link> d' <span className='text-oranground font-major'>eduVibe</span>
+        </div>
       </div>
     </div>
   );

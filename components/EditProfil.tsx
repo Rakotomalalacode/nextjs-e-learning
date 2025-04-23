@@ -1,6 +1,6 @@
 'use client';
 
-import  { EditProfil }  from '@/types/EditProfil';
+import {EditProfil}  from '@/types/EditProfil';
 import { useState } from 'react';
 
 type Props = {
@@ -31,7 +31,7 @@ export default function EditProfil({ items }: Props) {
                         </button>
 
                         <div
-                            className={`overflow-hidden transition-all hover:bg-darkwhite duration-300 px-4 rounded-b-lg ${isOpen ? 'max-h-40 py-2' : 'max-h-0'
+                            className={`overflow-hidden transition-all duration-300 rounded-b-lg ${isOpen ? 'h-auto' : 'max-h-0'
                                 }`}
                         >
                             {content}

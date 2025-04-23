@@ -51,6 +51,7 @@ export const authOptions: NextAuthOptions = {
         session.user.id = dbUser.id;
         session.user.googleId = dbUser.googleId;
         session.user.role = dbUser.role; 
+        session.user.imageLocal = dbUser.imageLocal;
       }
       return session;
     },
