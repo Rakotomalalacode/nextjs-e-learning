@@ -50,3 +50,16 @@ body {
   font-family: "Outfit", sans-serif;
   font-weight: 300;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--oranground); 
+  border-radius: 5px;
+}

@@ -16,7 +16,6 @@ import HoursMalalafomba from '../HoursMalalafomba';
 import { LiaUserEditSolid } from 'react-icons/lia';
 import EditProfil from '../EditProfil';
 import { HiMiniChevronDown } from 'react-icons/hi2';
-
 import UploadImage from '../ui/UploadImage';
 import Tooltip from '../ui/Tooltip';
 
@@ -78,7 +77,7 @@ const Description: React.FC<DescriptionProps> = ({ description }) => {
     ]
 
     return (
-        <div className=" h-full overflow-auto overflow-y-scroll max-h-screen">
+        <div className=" h-full">
             <div className='sticky  top-0 bg-background p-4 flex items-center  justify-between border-b border-dash'>
                 <h1 className='flex gap-2'><HoursMalalafomba /><p className='text-oranground'>{session?.user?.name}</p></h1>
                 <BarDeRechercher />

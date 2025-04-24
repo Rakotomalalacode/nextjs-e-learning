@@ -9,6 +9,7 @@ declare module "next-auth" {
       imageLocal?: string | null; 
       role?: string;
       googleId?: string;
+      id?: number | any;
     };
   }
 }

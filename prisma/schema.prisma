@@ -20,16 +20,47 @@ enum Role {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  googleId   String   @unique
+  id         Int       @id @default(autoincrement())
+  googleId   String    @unique
   name       String?
-  email      String   @unique
+  email      String    @unique
   image      String?
   imageLocal String?
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  role       Role     @default(student)
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  role       Role      @default(student)
+  Product    Product[]
 }
+
+model Product {
+  id           Int      @id @default(autoincrement())
+  name         String
+  description  String?
+  tag          String
+  price        Float
+  maincoursUrl String?  @map("main_cours_url")
+  intocoursUrl String?  @map("intro_cours_url")
+  thumbnailUrl String?  @map("thumbnail_url")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+  numero       Int         @default(1)
+  userId       Int // Clé étrangère: Identifiant de l'utilisateur
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade) // Définition de la relation
+
+  @@map("products")
+}
+
+/**
+ * model Product {
+ * id          Int       @id @default(autoincrement())
+ * name        String
+ * description String?
+ * userId      Int       // Clé étrangère: Identifiant de l'utilisateur
+ * user        User      @relation(fields: [userId], references: [id], onDelete: Cascade) // Définition de la relation
+ * createdAt   DateTime  @default(now())
+ * updatedAt   DateTime  @updatedAt
+ * }
+ */
 
 /**
  * generator client {
