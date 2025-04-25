@@ -157,8 +157,6 @@ const DashTeacher: React.FC = () => {
 
     if (error) return <div className="text-red-500">{error}</div>;
 
-
-
     useEffect(() => {
         if (status === 'unauthenticated') {
             router.push('/');

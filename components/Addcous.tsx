@@ -44,14 +44,14 @@ const Addcous = () => {
                     >
 
                         {
-                            selectedItem?.id === item.id ? <div className='text-oranground'>{item.labelOne}</div> : <div>{item.labelTow}</div>
+                            selectedItem?.id === item.id ? <div className='text-indigo-600'>{item.labelOne}</div> : <div>{item.labelTow}</div>
                         }
-                        <p className={`text-lg font-major ${selectedItem?.id == item.id ? 'text-oranground' : ''}`}>{item.name}</p>
+                        <p className={`text-lg text-start font-major ${selectedItem?.id == item.id ? 'text-green-600' : ''}`}>{item.name}</p>
                     </button>
                 ))}
                 <div className='rounded p-6 bg-darkwhite flex flex-row items-center gap-6 py-8 font-major'>
-                    <h1 className='text-oranground'>Totale de votre cours</h1>
-                    <div className='bg-oranground/20 w-10 h-10 flex justify-center text-center items-center rounded-full'><p><Pagesum userId={session?.user?.id} /></p></div>
+                    <h1 className='text-green-600'>Totale de votre cours</h1>
+                    <div className='bg-indigo-600/20 w-10 h-10 flex justify-center text-center items-center rounded-full'><p><Pagesum userId={session?.user?.id} /></p></div>
                 </div>
             </div>
             <div className="flex-1">

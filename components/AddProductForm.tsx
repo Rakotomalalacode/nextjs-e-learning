@@ -156,8 +156,8 @@ const AddProductForm: React.FC<ProfileImageProps> = ({ initialImageUrl }) => {
             </div>
           </div>
         </div>
-        <div className="lg:flex gap-4">
-          <div className='p-4 pr-7 flex flex-col gap-4 w-auto lg:w-1/2'>
+        <div className="grid lg:grid-cols-2 gap-6">
+          <div className='p-4 flex flex-col gap-4'>
             <label className="text-xl">Description du cours</label>
             <textarea
               className="textarea textarea-bordered border border-dashed rounded border-oranground bg-darkwhite focus:outline-none p-3 h-[252px]"
@@ -168,12 +168,12 @@ const AddProductForm: React.FC<ProfileImageProps> = ({ initialImageUrl }) => {
               required
             />
           </div>
-          <div className='p-4 pr-7 flex flex-col gap-4 w-auto lg:w-1/2'>
+          <div className='p-4 flex flex-col gap-4'>
             <div className='flex flex-col gap-4'>
               <label className="text-xl">Titre du cours</label>
               <input
                 type="text"
-                className="input input-bordered border border-dashed border-oranground w-full rounded h-11 focus:outline-none p-3"
+                className="input input-bordered border border-dashed border-oranground w-full rounded h-11 focus:outline-none bg-darkwhite p-3"
                 value={name}
                 placeholder='Titre de votre cours'
                 onChange={(e) => setName(e.target.value)}
@@ -184,7 +184,7 @@ const AddProductForm: React.FC<ProfileImageProps> = ({ initialImageUrl }) => {
               <label className="text-xl">Catégorie</label>
               <input
                 type="text"
-                className="input input-bordered border border-dashed border-oranground w-full rounded h-11 focus:outline-none p-3"
+                className="input input-bordered border border-dashed border-oranground w-full rounded h-11 focus:outline-none bg-darkwhite p-3"
                 value={tagcours}
                 placeholder='Catégorie de votre cours'
                 onChange={(e) => setTagcours(e.target.value)}
@@ -194,30 +194,29 @@ const AddProductForm: React.FC<ProfileImageProps> = ({ initialImageUrl }) => {
               <label className="text-xl">Prix du cours (en Ar)</label>
               <input
                 type="number"
-                className="input input-bordered border border-dashed border-oranground w-full rounded h-11 focus:outline-none p-3"
+                className="input input-bordered border border-dashed border-oranground w-full rounded h-11 focus:outline-none bg-darkwhite p-3"
                 value={prixcours}
                 placeholder='Prix de votre cours'
                 onChange={(e) => setPrixcours(e.target.value)}
               />
             </div>
+            <button
+              type="submit"
+              className="flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded transition"
+            >
+              <FiUpload className="text-xl" />
+              Ajouter le cours
+            </button>
           </div>
         </div>
-      </div>
-      <div className='lg:flex flex-wrap items-center justify-between py-4 p-7 lg:pl-20'>
-        <div>
+        <div className='p-4'>
           {message && (
             <p className="text-center text-lg mt-4 text-green-600">
               {message}
             </p>
           )}
+          <p>helllo</p>
         </div>
-        <button
-          type="submit"
-          className="flex w-auto lg:w-1/2 items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded transition"
-        >
-          <FiUpload className="text-xl" />
-          Ajouter le cours
-        </button>
       </div>
     </form>
   );
