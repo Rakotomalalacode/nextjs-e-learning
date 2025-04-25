@@ -181,7 +181,7 @@ const DashTeacher: React.FC = () => {
 
     return (
         <div className="flex flex-row">
-            <div className="h-screen w-[72px] flex flex-col items-center text-center px-1 justify-between py-3">
+            <div className="h-screen fixed bg-background w-[72px] flex flex-col items-center text-center px-1 justify-between py-3 border-r border-dash">
                 <div className='flex flex-col space-y-3 items-center'>
                     <Image
                         src={LogoMini}
@@ -220,7 +220,7 @@ const DashTeacher: React.FC = () => {
                 </div>
             </div>
 
-            <div className="flex-1 border-l  border-dash">
+            <div className="flex-1 ml-[72px]">
                 {selectedItem && <Description description={selectedItem.description} />}
                 {!selectedItem && (
                     <div className="p-4 h-full">

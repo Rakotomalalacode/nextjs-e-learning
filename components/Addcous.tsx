@@ -23,7 +23,7 @@ const Description: React.FC<DescriptionProps> = ({ description }) => {
 
 export const menuItems: MenuItem[] = [
     { id: 'item1', labelOne: <PiUploadFill size={26} />, labelTow: <PiUploadLight size={26} />, name: 'Ajoute un nouveau cours', description: <AddProductForm /> },
-    { id: 'item2', labelOne: <TbLayoutDashboardFilled size={26} />, labelTow: <TbLayoutDashboard size={26} />, name: 'Modifier un nouveau cours.', description: 'Ceci est la description de l\'article 1.' },
+    { id: 'item2', labelOne: <TbLayoutDashboardFilled size={26} />, labelTow: <TbLayoutDashboard size={26} />, name: 'Modifier un nouveau cours', description: 'Ceci est la description de l\'article 1.' },
 ];
 
 const Addcous = () => {
